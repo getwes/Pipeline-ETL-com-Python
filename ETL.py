@@ -9,6 +9,7 @@ def extract_data(endpoint):
         return response.json()
     else:
         print(f"erro ao extrairi dados da API: {response.sttus_code}")
+        return None
 
 
 
