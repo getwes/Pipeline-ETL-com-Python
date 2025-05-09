@@ -10,7 +10,7 @@ def extract_data(endpoint):
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"erro ao extrairi dados da API: {response.sttus_code}")
+        print(f"erro ao extrairi dados da API: {response.status_code}")
         return None
 
 def load_data(data,path):
@@ -45,13 +45,3 @@ while True:
         break
 i += 1
 
-def loop_load_data(endpoint, path):
-    i = 1
-    while True:
-        data = extract_data(endpoint + str(i))
-        if data:
-            load_data(data, path)
-        else:
-             print(f"erro ao etrair dados da api: {data}")
-             break
-    i += 1

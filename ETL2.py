@@ -20,16 +20,17 @@ def load_data(data,path):
         json.dump(data, file)
 
 
-def loop_load_data(endpoint, path):
-    
+def loop_load_data(endpoint):
+    endpoint = "https://dummyjson.com/" + endpoint
     i = 1
     while True:
         data = extract_data(endpoint + str(i))
         if data:
-            load_data(data, path)
+            load_data(data, endpoint)
         else:
              print(f"erro ao etrair dados da api: {data}")
              break
     i += 1
-loop_load_data("https://dummyjson.com/users/", "users")
-loop_load_data("https://dummyjson.com/products/", "products")
+endpoints = [ "users", " products"]
+for endpoint in endpoints:
+    loop_load_data(endpoint)
