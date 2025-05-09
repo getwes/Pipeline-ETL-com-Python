@@ -19,33 +19,9 @@ def load_data(data,path):
     with open(f"{path}/{id}.json", "w") as file:
         json.dump(data, file)
 
-endpoint_users = "https://dummyjson.com/users/"
-
-i = 1
-while True:
-    data_users = extract_data(endpoint_users + str(i))
-    if data_users:
-       load_data(data_users, "users")
-    else:
-        print(f"erro ao extrair dados da api {data_users}")
-        break
-i += 1
-
-
-
-endpoint_products = "https://dummyjson.com/products/"
-
-i = 1
-while True:
-    data_products = extract_data(endpoint_products + str(i))
-    if data_products:
-       load_data(data_products, "products")
-    else:
-        print(f"erro ao extrair dados da api {data_products}")
-        break
-i += 1
 
 def loop_load_data(endpoint, path):
+    
     i = 1
     while True:
         data = extract_data(endpoint + str(i))
@@ -55,3 +31,5 @@ def loop_load_data(endpoint, path):
              print(f"erro ao etrair dados da api: {data}")
              break
     i += 1
+loop_load_data("https://dummyjson.com/users/", "users")
+loop_load_data("https://dummyjson.com/products/", "products")
